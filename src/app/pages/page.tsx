@@ -1,5 +1,6 @@
 'use client'
 import { useState } from "react"
+import Link from "next/link";
 
 export default function Formulario() {
     //Valores dos Dados Pessoais
@@ -18,9 +19,9 @@ export default function Formulario() {
     const [number, setNum] = useState('');
     const [complem, setComplem] = useState('');
     const [neighborhood, setNeighbor] = useState('');
-    const [city, setcity] = useState('');
-    const [state, setstate] = useState('');
-    const [postalCode, setpostalCode] = useState('');
+    const [city, setCity] = useState('');
+    const [state, setState] = useState('');
+    const [postalCode, setPostalCode] = useState('');
     const [country, setCountry] = useState('');
 
     //Valores dos Dados de Matrícula
@@ -29,14 +30,14 @@ export default function Formulario() {
     const [yearOfEntry, setEntry] = useState('');
     const [currentSemester, setSemester] = useState('');
     const [academicStatus, setStatus] = useState('');
-    const [gpa, setgpa] = useState('');
+    const [gpa, setGpa] = useState('');
     const [educationMode, setMode] = useState('');
 
     //Valores dos Dados de Emergência
-    const [emname, setEmname] = useState('');
-    const [emrelationship, setEmrelation] = useState('');
-    const [emphone, setEmphone] = useState('');
-    const [ememail, setEmemail] = useState('');
+    const [emName, setEmName] = useState('');
+    const [relationship, setRelation] = useState('');
+    const [emPhone, setEmPhone] = useState('');
+    const [emEmail, setEmEmail] = useState('');
 
     const handleSubmit = async (event: any) => {
         
@@ -63,9 +64,9 @@ export default function Formulario() {
     }
 
     return (
-        <div>
+        <div className="flex justify-center items-center">
             <form onSubmit={handleSubmit} method="POST">
-            <p className="text-2xl font-medium pt-3 pb-3">Dados Pessoais</p>                
+            <p className="text-2xl font-medium pt-3 pb-3 justify-center items-center">Dados Pessoais</p>                
                 <div className="input">
                     <label htmlFor="nome">Nome: </label>
                     <input type="text" 
@@ -74,7 +75,8 @@ export default function Formulario() {
                              value={name}
                              onChange={(e) => setName(e.target.value)}
                              placeholder="Digite aqui seu nome"
-                             className="placeholder-text"/>
+                             className="placeholder-text"
+                             />
                 </div>
 
                 <div className="input">
@@ -227,7 +229,7 @@ export default function Formulario() {
                             id="city"
                             placeholder="Digite sua city"
                             value={city}
-                            onChange={(e) => setcity(e.target.value)}
+                            onChange={(e) => setCity(e.target.value)}
                             className="placeholder-text"/>
                 </div>
                 
@@ -238,7 +240,7 @@ export default function Formulario() {
                             id="state"
                             placeholder="Digite seu state"
                             value={state}
-                            onChange={(e) => setstate(e.target.value)}
+                            onChange={(e) => setState(e.target.value)}
                             className="placeholder-text"/>
                 </div>
 
@@ -249,7 +251,7 @@ export default function Formulario() {
                             id="postalCode"
                             placeholder="00000-000"
                             value={postalCode}
-                            onChange={(e) => setpostalCode(e.target.value)}
+                            onChange={(e) => setPostalCode(e.target.value)}
                             className="placeholder-text"/>
                 </div>
 
@@ -332,7 +334,7 @@ export default function Formulario() {
                             id="gpa"
                             placeholder="Média"
                             value={gpa}
-                            onChange={(e) => setgpa(e.target.value)}
+                            onChange={(e) => setGpa(e.target.value)}
                             step={0.50} 
                             min={0}
                             max={100}
@@ -357,8 +359,8 @@ export default function Formulario() {
                     <input type="text" 
                              name="Emnome" 
                              id="Emnome" 
-                             value={emname}
-                             onChange={(e) => setEmname(e.target.value)}
+                             value={emName}
+                             onChange={(e) => setEmName(e.target.value)}
                              placeholder="Nome de contato"
                              className="placeholder-text"/>
                 </div>
@@ -368,8 +370,8 @@ export default function Formulario() {
                     <input type="text" 
                              name="emparent" 
                              id="emparent" 
-                             value={emrelationship}
-                             onChange={(e) => setEmrelation(e.target.value)}
+                             value={relationship}
+                             onChange={(e) => setRelation(e.target.value)}
                              placeholder="Parentesco"                                 
                              className="placeholder-text" />
                 </div>
@@ -379,8 +381,8 @@ export default function Formulario() {
                     <input type="Emtel"
                             name="Emtel"
                             id="EMtel"
-                            value={emphone}
-                            onChange={(e) => setEmphone(e.target.value)}
+                            value={emPhone}
+                            onChange={(e) => setEmPhone(e.target.value)}
                             placeholder="Digite seu telefone"
                             className="placeholder-text"/>
                 </div>
@@ -390,8 +392,8 @@ export default function Formulario() {
                     <input type="ememail" 
                             name="ememail" 
                             id="ememail" 
-                            value={ememail}
-                            onChange={(e) => setEmemail(e.target.value)}
+                            value={emEmail}
+                            onChange={(e) => setEmEmail(e.target.value)}
                             placeholder="Digite aqui seu email"
                             className="placeholder-text"/>
                 </div>
@@ -400,7 +402,8 @@ export default function Formulario() {
                 <div className="flex gap-2 pb-2">
                     <input type="reset" className="reset" value="Limpar"/>
                     <input type="submit" className="submit" value="Enviar"/>
-                </div>               
+                </div>
+                <p>Já possui uma conta? Faça Login <Link className="text-green-500 pb-4" href="/">aqui</Link></p>
             </form>
         </div>
     )

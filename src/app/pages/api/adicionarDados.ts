@@ -1,5 +1,5 @@
-/*import { NextApiResponse, NextApiRequest } from "next";
-import adicionar_dados from "@/functions/enviarform";
+import { NextApiResponse, NextApiRequest } from "next";
+import adicionar_dados from "@/app/functions/enviarForm";
 
 interface ResponseData {
     message: string
@@ -48,5 +48,4 @@ export default async function handler (req: NextApiRequest, res: NextApiResponse
         res.status(405).end(`Método ${req.method} não permitido`)
 
     }
-
-} */
+}

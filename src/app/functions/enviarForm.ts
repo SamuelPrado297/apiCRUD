@@ -1,17 +1,15 @@
-/*import { PrismaClient } from "@prisma/client";
-
+import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export default async function adicionar_dados(nome: any, email: any){
+export default async function adicionar_dados(nome: any, id: any){
 
     const pessoa = await prisma.usuario.create(
         {
             data:{
-                name: nome,
-                email: email
+                id: id,
+                name: nome, 
             }
         }
     )
-
-} */
+}

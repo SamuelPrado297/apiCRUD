@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//Table usuário - Dados Pessoais
+model usuario { 
+  id            Int @id @default(autoincrement()) 
+  name          String
+  dateOfBirth   DateTime
+  gender        gender
+  cpf           String @unique
+  phone         String
+  email         String @unique
+  nacionality   String
+  maritalStatus maritalStatus
+}
+
+enum gender {
+  MALE
+  FEMALE
+  OTHER
+  PREFER_NOT_TO_SAY
+}
+
+enum maritalStatus {
+  SINGLE
+  MARRIED
+  DIVORCED
+  WIDOWED
+  OTHER
+}
+
+//table residencial - Dados Residênciais
+model residencial {
+  id              Int @id @default(autoincrement())
+  address         String
+  street          String
+  number          String
+  complement      String
+  neighborhood    String
+  city            String
+  state           String
+  postalCode      String
+  country         String
+}
+
+//table academico - Dados Acadêmicos
+model academico {
+  id          Int @id @default(autoincrement())
+  registNum   String 
+  couse       String
+  yearOfEntry Int
+  currentSemester Int
+  academicStatus  status
+  gpa         Int
+  educationMode   education
+}
+
+enum status {
+  ACTIVE
+  INACTIVE
+  GRADUATED
+  DROPPED_OUT
+  SUSPENDED
+}
+
+enum education {
+  PRESENTIAL
+  REMOTE
+  HYBRID
+}
+
+//table emergency - Dados Emergenciais
+model emergency {
+  id            Int @id @default(autoincrement())
+  emName        String
+  relantioship  String
+  emPhone       String
+  emEmail       String
+}
